@@ -1,0 +1,16 @@
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+note over browser:
+browser sends the request with user input
+end note
+server-->browser: HTTP status code: 302, location to redirect: /exampleapp/notes 
+note over server:
+server tells browser to make new HTTP GET request to location /exampleapp/notes
+end note
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [{"content":"mit‰ t‰n‰‰?","date":"2020-09-10T13:02:43.549Z"}, ...]
