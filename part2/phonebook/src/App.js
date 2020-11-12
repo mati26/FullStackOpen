@@ -41,8 +41,8 @@ const App = () => {
                     },
                 ).catch(error => {
                   setNotificationMessage(`Information of ${newName} has already been removed from server`);
-                  setPersons(persons.filter(person => person.name !== newName))
-                  setType('error')
+                  setPersons(persons.filter(person => person.name !== newName));
+                  setType('error');
                 });
 
               }
@@ -51,10 +51,13 @@ const App = () => {
                   .createPerson(newPerson)
                   .then(returnedPerson => {
                     setPersons(persons.concat(returnedPerson));
+                    setNotificationMessage(`Added ${returnedPerson.name}`);
+                  })
+                  .catch(error => {
+                    setNotificationMessage(error.response.data.error);
+                    setType('error');
                   });
-              setNotificationMessage(
-                  `Added ${event.target.value}`,
-              );
+
             }
             setNewName('');
             setNewNumber('');
